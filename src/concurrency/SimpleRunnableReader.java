@@ -6,18 +6,22 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class SimpleReader implements Runnable {
+/**
+ * se crea un simple clase para ejecutar los hilos de manera asíncrona
+ */
+public class SimpleRunnableReader implements Runnable {
 
     private String inFile;
 
-    public SimpleReader(String inFile){
+    public SimpleRunnableReader(String inFile){
         this.inFile=inFile;
     }
 
     public void doRead() throws IOException {
         String line=null;
         int total=0;
-        BufferedReader reader = Files.newBufferedReader(Paths.get( System.getProperty("user.dir")+ inFile));
+        String path = System.getProperty("user.dir") + inFile;
+        BufferedReader reader = Files.newBufferedReader(Paths.get(path));
         while((line=reader.readLine())!=null){
             total+=line.length();
         }
