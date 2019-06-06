@@ -1,11 +1,13 @@
+import Objects.Person;
 import concurrency.ExecutorWithFuture;
 import concurrency.SimpleExecutorService;
 import concurrency.SimpleThreadPool;
 import concurrency.synchronization.Bank;
+import lambdas.LambdaExamples;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
 /**
@@ -23,20 +25,24 @@ public class Pruebas {
 //     executorWithFuture();
 //        synchronizedExecutor();
 //        synchronizedBlockExecutor();
-        testStream();
+//        testStream();
+//        LambdaExamples.comparatorExample();
+        LambdaExamples.predicateExample();
     }
 
     public static void testStream() {
-        List<Person> people = new ArrayList<>();
-        people.add(new Person(80, "Samuel"));
-        people.add(new Person(30, "Karla"));
-        people.add(new Person(80, "Sebastian"));
-        people.add(new Person(10, "Ximena"));
+        Person p = new Person();
+
+        List<Person> people = p.getPeople();
 
         Map<Integer, List<Person>> byAge = people.stream()
                 .collect(Collectors.groupingBy(a -> a.getAge()));
 
         System.out.println(byAge);
+
+        BinaryOperator<Integer> sum = Integer::sum;
+
+
     }
 
     public static void synchronizedExecutor() {

@@ -1,3 +1,5 @@
+import Objects.Person;
+
 import java.io.*;
 
 public class IntersectionType {
@@ -32,7 +34,7 @@ public class IntersectionType {
         RandomAccessFile raf = new RandomAccessFile(
                 System.getProperty("user.dir") + "\\resources\\file1.txt", "rw");
         //aca se está generando el error de compilación ya que no puede usar un RandomAccess
-        person = it.read(raf);
+//        person = it.read(raf);
         System.out.println(person);
 
         /*para solucionar lo anterior podemos crear simplemente 2 metodo 1 para el inputStream y otro
